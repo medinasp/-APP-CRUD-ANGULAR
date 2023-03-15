@@ -32,6 +32,14 @@ jobs:
         with:
           name: node-app
           path: .
+          
+        - name: Setup Chrome
+        uses: browser-actions/setup-chrome@v1
+        - name: Run tests with Chrome
+        run: |
+          google-chrome --version
+          google-chrome --headless --no-sandbox --disable-gpu --remote-debugging-port=9222 http://localhost:4200
+
 
   deploy:
     runs-on: ubuntu-latest
